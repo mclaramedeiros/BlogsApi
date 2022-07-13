@@ -1,28 +1,29 @@
-'use strict';
-module.exports = (sequelize, DataTypes) => {
-  const BlogPosts = sequelize.define('BlogPosts', {
-    id: {
-      allowNull: false,
-      autoIncrement: true,
-      primaryKey: true,
-      type: DataTypes.INTEGER
-    },
-    title: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    postId: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      primaryKey: true,
-      references: {
-        model: "BlogPosts",
-        key: "id"
-      },
-    },
-  }, 
-  {
-    tableName: 'blogPosts'
-  });
-  return BlogPosts;
-};
+// 'use strict';
+// module.exports = (sequelize, DataTypes) => {
+//   const BlogPosts = sequelize.define('BlogPosts', {
+//     id: {
+//       allowNull: false,
+//       autoIncrement: true,
+//       primaryKey: true,
+//       type: DataTypes.INTEGER
+//     },
+//     title: {
+//       type: DataTypes.STRING,
+//       allowNull: false,
+//     },
+//     userId: {
+//       type: Sequelize.INTEGER,
+//       onUpdate: 'CASCADE',
+//       onDelete: 'CASCADE',
+//       allowNull: false,
+//       references: {
+//         model: "Users",
+//         key: "id"
+//       }
+//     },
+//   }, 
+//   {
+//     tableName: 'BlogPosts'
+//   });
+//   return BlogPosts;
+// };
