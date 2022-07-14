@@ -1,6 +1,9 @@
 'use strict';
-module.exports = (sequelize, DataTypes) => {
-  const Users = sequelize.define('User', {
+
+const { TIMESTAMP } = require("mysql2/lib/constants/types");
+
+const Users = (sequelize, DataTypes) => {
+  const User = sequelize.define('User', {
     id: {
       allowNull: false,
       autoIncrement: true,
@@ -25,7 +28,10 @@ module.exports = (sequelize, DataTypes) => {
     },
   }, 
   {
-    tableName: 'User'
+    tableName: 'Users',
+    timestamps: false
   });
-  return Users;
+  return User;
 };
+
+module.exports = Users;
