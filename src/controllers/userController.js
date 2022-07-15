@@ -1,5 +1,6 @@
 const schemas = require('../valitations/userSchema');
 const userService = require('../services/userService');
+const { verifyToken } = require('../helpers/jwt');
 
 module.exports = {
   userFunction: async (req, res) => {
@@ -14,5 +15,9 @@ module.exports = {
       return res.status(409).json(result);
     }
     res.status(201).json({ token: result.token });
+  },
+  getUsers: async (req, res) => {
+    const users = await userService.getUsers();
+    res.status(200).json(users);
   },
 };

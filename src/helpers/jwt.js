@@ -1,4 +1,5 @@
 const jwt = require('jsonwebtoken');
+const throwUnauthorizedError = require('../middlewares/throwUnauthorizedError');
 
 const createToken = (data) => {
   const token = jwt.sign({ data }, process.env.JWT_SECRET, {
@@ -9,11 +10,14 @@ const createToken = (data) => {
 };
 
 const verifyToken = (token) => {
+  if (!token) {
+    throwUnauthorizedError('Token not found');
+  }
   try {
     const { data } = jwt.verify(token, process.env.JWT_SECRET);
     return data;
   } catch (error) {
-    return { message: error.message };
+    throwUnauthorizedError('Expired or invalid token');
   }
 };
 
