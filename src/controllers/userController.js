@@ -1,6 +1,5 @@
 const schemas = require('../valitations/userSchema');
 const userService = require('../services/userService');
-const { verifyToken } = require('../helpers/jwt');
 
 module.exports = {
   userFunction: async (req, res) => {
