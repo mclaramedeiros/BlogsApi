@@ -1,4 +1,4 @@
-const schemas = require('../valitations/schemas');
+const schemas = require('../valitations/loginSchemas');
 const loginService = require('../services/loginService');
 
 module.exports = {
