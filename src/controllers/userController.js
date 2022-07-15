@@ -19,4 +19,7 @@ module.exports = {
     const users = await userService.getUsers();
     res.status(200).json(users);
   },
+  // getUserById: async (req, res) => {
+  //   const { id } = req.params;
+  // }
 };

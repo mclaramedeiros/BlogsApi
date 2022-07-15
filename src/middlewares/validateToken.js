@@ -1,4 +1,4 @@
-const verifyToken = require('../helpers/jwt');
+const { verifyToken } = require('../helpers/jwt');
 
 module.exports = {
   validateToken: async (req, _res, next) => {
