@@ -9,22 +9,19 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       title: {
-        type: Sequelize.STRING,
-        allowNull: false,
+        type: Sequelize.STRING
       },
       content: {
-        type: Sequelize.STRING,
-        allowNull: false,
+        type: Sequelize.STRING
       },
       userId: {
-        allowNull: false,
         type: Sequelize.INTEGER,
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE',
         references: {
           model: 'Users',
-          key: 'id'
-        }
+          key: 'id',
+        },
       },
       published: {
         allowNull: false,
@@ -33,7 +30,7 @@ module.exports = {
       updated: {
         allowNull: false,
         type: Sequelize.DATE
-      },
+      }
     });
   },
   down: async (queryInterface, Sequelize) => {
