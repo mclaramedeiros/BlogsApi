@@ -6,8 +6,12 @@ const postCategories = async (name) => {
     return { message: '"name" is required' };
   }
   const data = await models.Category.create({ name }, { raw: true });
-  console.log(data);
   return data;
 };
 
-module.exports = { postCategories };
+const getCategories = async () => {
+  const result = await models.Category.findAll();
+  return result;
+};
+
+module.exports = { postCategories, getCategories };
