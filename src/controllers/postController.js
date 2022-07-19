@@ -9,8 +9,6 @@ const postFunction = async (req, res) => {
   const token = req.headers.authorization;
   const user = await readToken(token);
 
-  console.log(user);
-
   const { error } = schemas.postSchema.validate(req.body);
 
   if (error) return res.status(400).json({ message: error.message });

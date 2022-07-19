@@ -3,10 +3,7 @@ const jwt = require('jsonwebtoken');
 const { throwUnauthorizedError } = require('../middlewares/throwError');
 
 const createToken = (data) => {
-  const token = jwt.sign(data, process.env.JWT_SECRET, {
-    expiresIn: '1h',
-    algorithm: 'HS256',
-  });
+  const token = jwt.sign(data, process.env.JWT_SECRET);
   return token;
 };
 
