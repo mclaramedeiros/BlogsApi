@@ -1,5 +1,6 @@
 // const { Category } = require('../database/models');
 const models = require('../database/models');
+const { throwBadRequestError } = require('../middlewares/throwError');
 
 const postCategories = async (name) => {
   if (!name) {
@@ -14,4 +15,12 @@ const getCategories = async () => {
   return result;
 };
 
-module.exports = { postCategories, getCategories };
+const getCateById = async (id) => {
+  const categoryPk = await models.Category.findByPk(id);
+  if (!categoryPk) {
+    throwBadRequestError('"categoryIds" not found');
+  }
+  return categoryPk;
+};
+
+module.exports = { postCategories, getCategories, getCateById };

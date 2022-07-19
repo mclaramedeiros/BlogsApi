@@ -6,9 +6,11 @@ const userFunction = async (user) => {
   if (userExists) {
     return { message: 'User already registered' };
   }
-  const { password, ...rest } = user;
-  await User.create(user);
-  const token = createToken(rest);
+  // const { password, ...rest } = user;
+  const { dataValues } = await User.create(user);
+  // 
+  console.log(dataValues);
+  const token = createToken(dataValues.id);
   return { token };
 };
 
@@ -21,15 +23,15 @@ const getUsers = async () => {
 };
 
 const getUserById = async (id) => {
-    const user = await User.findOne({
-      where: { id },
-      raw: true,
-    });
-    if (!user) {
-      return { message: 'User does not exist' };
-    }
-    const { password, ...newUser } = user;
-    return newUser;
-  };
+  const user = await User.findOne({
+    where: { id },
+    raw: true,
+  });
+  if (!user) {
+    return { message: 'User does not exist' };
+  }
+  const { password, ...newUser } = user;
+  return newUser;
+};
 
 module.exports = { userFunction, getUsers, getUserById };

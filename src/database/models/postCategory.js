@@ -7,6 +7,8 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.INTEGER,
         allowNull: false,
         primaryKey: true,
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE',
         references: {
           model: 'BlogPost',
           key: 'id',
@@ -16,6 +18,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.INTEGER,
         allowNull: false,
         primaryKey: true,
+        onDelete: 'CASCADE',
         references: {
           model: 'Category',
           key: 'id',
@@ -23,7 +26,8 @@ module.exports = (sequelize, DataTypes) => {
       },
     },
     {
-      tableName: 'PostCategory',
+      tableName: 'PostCategories',
+      timestamps: false,
     }
   );
   PostCategory.associate = (models) => {
